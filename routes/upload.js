@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const multer = require("multer");
 const xlsxFile = require("read-excel-file/node");
+const Empresa = require("../models/Empresa");
 
 var ficheiroexel;
 var index = 0;
@@ -61,7 +62,10 @@ var storage = multer.diskStorage({
 
 var upload = multer({ storage: storage });
 
-router.post("/informacoes", upload.single("file"), (req, res) => {
+router.post("/informacoes", upload.single("file"), async (req, res) => {
+  array.empresa = req.body.empresa;
+  array.email = req.body.email;
+  array.endereco = req.body.endereco;
   xlsxFile("./uploads/" + ficheiroexel, { sheet: "Balancete" }).then(
     (sheets) => {
       for (i in sheets) {
@@ -92,11 +96,18 @@ router.post("/informacoes", upload.single("file"), (req, res) => {
           }
         }
       }
-      console.log(array);
+      async function enviar() {
+        const novaEmpresa = new Empresa(array);
+        try {
+          await novaEmpresa.save();
+          res.status(200).json("weldone");
+        } catch (err) {
+          res.status(500).json(err);
+        }
+      }
+      enviar();
     }
   );
-
-  res.status(200).json("enviado com sucesso");
 });
 
 module.exports = router;
