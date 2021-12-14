@@ -11,7 +11,11 @@ const empresas = require("./routes/empresa");
 
 //CORS PERMISÃO PARA ORIGENS DIFERENTES
 app.use(function (req, res, next) {
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "http://localhost:3000",
+    "https://emarpe-api.herokuapp.com"
+  );
   res.setHeader(
     "Access-Control-Allow-Methods",
     "GET, POST, OPTIONS, PUT, PATCH, DELETE"
@@ -23,7 +27,7 @@ app.use(function (req, res, next) {
   res.setHeader("Access-Control-Allow-Credentials", true);
   next();
 });
-//----------------------------------------------------------------------
+//------------------------
 
 //inicializar dotenv
 dotenv.config();
