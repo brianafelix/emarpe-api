@@ -14,7 +14,7 @@ app.use(function (req, res, next) {
   res.setHeader(
     "Access-Control-Allow-Origin",
     "http://localhost:3000",
-    "https://emarpe-api.herokuapp.com"
+    "https://quirky-shannon-132234.netlify.app"
   );
   res.setHeader(
     "Access-Control-Allow-Methods",
