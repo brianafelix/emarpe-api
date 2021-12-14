@@ -68,33 +68,33 @@ mongoose.connect(
 // };
 
 // xlsxFile("bal2.xlsx").then((sheets) => {
-  // for (i in sheets) {
-  //   index = index + 1;
+// for (i in sheets) {
+//   index = index + 1;
 
-  //   for (j in sheets[i]) {
-  //     if (j == 0 && i == 3) {
-  //       ordem = sheets[i][j].substring(0, 3);
-  //     }
-  //     // console.log(Number(ordem));
-  //     if (  Number(ordem) < 100) {
-  //       try {
-  //         array[Number(sheets[i][j].substring(0, 3))].push(sheets[i][j]);
-  //       } catch (err) {}
-  //     }
-  //   }
-  //   if (index == 1 && j == 3) {
-  //     array.mes = sheets[i][j].substring(0, 3);
-  //     array.ano = Number(sheets[i][j].substring(3));
-  //   }
-  // }
+//   for (j in sheets[i]) {
+//     if (j == 0 && i == 3) {
+//       ordem = sheets[i][j].substring(0, 3);
+//     }
+//     // console.log(Number(ordem));
+//     if (  Number(ordem) < 100) {
+//       try {
+//         array[Number(sheets[i][j].substring(0, 3))].push(sheets[i][j]);
+//       } catch (err) {}
+//     }
+//   }
+//   if (index == 1 && j == 3) {
+//     array.mes = sheets[i][j].substring(0, 3);
+//     array.ano = Number(sheets[i][j].substring(3));
+//   }
+// }
 
-  // for (let index = 0; index < sheets.length; index++) {
-  //   for (let i = 0; i < sheets[index].length; i++) {
-  //     console.log(sheets[index][i]);
-  //   }
-  // }
+// for (let index = 0; index < sheets.length; index++) {
+//   for (let i = 0; i < sheets[index].length; i++) {
+//     console.log(sheets[index][i]);
+//   }
+// }
 
-  // console.log(array);
+// console.log(array);
 // });
 
 app.use(express.json());
@@ -104,6 +104,6 @@ app.use(helmet());
 app.use("/api/uploadexcel", uploadexcel);
 app.use("/api/empresa", empresas);
 
-app.listen(8800, () => {
-  console.log("servidor rodando...");
+app.listen(process.env.PORT || 8800, () => {
+  console.log("backend server is running");
 });
